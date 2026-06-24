@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-main: #303030;
+  --color-secondary: #101010;
+  --color-accent: #ea580c;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-main);
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 4px;
+    border: 2px solid #0a0a0b;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #404040;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #ea580c;
+}
+
+@keyframes blinking-red {
+  0%, 100% { background-color: #ef4444; box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444; }
+  50% { background-color: #7f1d1d; box-shadow: 0 0 2px #7f1d1d; }
+}
+
+@keyframes glow-blue {
+  0%, 100% { text-shadow: 0 0 5px rgba(102, 204, 255, 0.5), 0 0 10px rgba(102, 204, 255, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(102, 204, 255, 0.8), 0 0 30px rgba(102, 204, 255, 0.6); }
+}
+
+.animate-glow-blue {
+  animation: glow-blue 2s infinite ease-in-out;
+}
+
+@keyframes text-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-text-gradient {
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: text-gradient 3s linear infinite;
+}
+
+.gradient-blue {
+  background-image: linear-gradient(90deg, #3366ff, #ffffff, #3366ff);
+}
+
+.gradient-orange {
+  background-image: linear-gradient(90deg, #aa6600, #ffffff, #aa6600);
+}
+
+.animate-blinking-red {
+  animation: blinking-red 1.5s infinite ease-in-out;
+}
+
+@keyframes blinking-text {
+  0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent); }
+  50% { opacity: 0.7; text-shadow: 0 0 2px var(--color-accent); }
+}
+
+@keyframes flow-glow-blue {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(51, 136, 255, 0.4)); }
+  50% { filter: drop-shadow(0 0 12px rgba(51, 136, 255, 0.7)); }
+}
+
+@keyframes flow-glow {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(204, 136, 51, 0.4)); }
+  50% { filter: drop-shadow(0 0 12px rgba(204, 136, 51, 0.7)); }
+}
+
+@keyframes group-flow-glow-v2 {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(68, 153, 255, 0.4)) drop-shadow(0 0 5px rgba(255, 136, 51, 0.4)); }
+  50% { filter: drop-shadow(0 0 15px rgba(68, 153, 255, 0.8)) drop-shadow(0 0 15px rgba(255, 136, 51, 0.8)); }
+}
+
+@keyframes group-shimmer-pingpong {
+  0% { transform: translateX(-150%) skewX(-30deg); }
+  50% { transform: translateX(150%) skewX(-30deg); }
+  100% { transform: translateX(-150%) skewX(-30deg); }
+}
+
+.animate-header-group-glow {
+  animation: group-flow-glow-v2 3s infinite ease-in-out;
+}
+
+.header-shimmer-container {
+  position: relative;
+  overflow: hidden;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.header-shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-30deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hover-group-header:hover .header-shimmer-effect {
+  opacity: 1;
+  animation: group-shimmer-pingpong 2.5s infinite linear;
+}
+
+@keyframes text-glow {
+  0% { text-shadow: 0 0 2px rgba(234, 88, 12, 0.2); }
+  50% { text-shadow: 0 0 15px rgba(234, 88, 12, 0.8), 0 0 25px rgba(234, 88, 12, 0.4); }
+  100% { text-shadow: 0 0 2px rgba(234, 88, 12, 0.2); }
+}
+
+@keyframes flag-wave {
+  0% { transform: skewY(0deg); }
+  25% { transform: skewY(2deg); }
+  50% { transform: skewY(-1deg); }
+  75% { transform: skewY(1deg); }
+  100% { transform: skewY(0deg); }
+}
+
+@keyframes light-sweep-btn {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes light-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-btn-light-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-btn-light-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 70%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.animate-btn-light-sweep:hover::after {
+  animation: light-sweep-btn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+}
+
+.animate-light-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 60%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.animate-light-sweep:hover, .group:hover .animate-light-sweep {
+  animation: light-sweep 1.5s infinite linear;
+}
+
+.animate-blinking-text {
+  animation: blinking-text 1s infinite ease-in-out;
+}
+
+.animate-flow-glow-blue {
+  animation: flow-glow-blue 2s infinite ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.animate-flow-glow-blue:hover {
+  filter: drop-shadow(0 0 15px #66ccff) brightness(1.4);
+  color: #a3e4ff;
+}
+
+.animate-flow-glow {
+  animation: flow-glow 2s infinite ease-in-out;
+}
+
+.animate-text-glow {
+  animation: text-glow 3s infinite ease-in-out;
+}
+
+.hover-header-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-header-effect:hover {
+  transform: scale(1.05);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.hover-flag-wave:hover, .group:hover .hover-flag-wave {
+  animation: flag-wave 1s infinite ease-in-out;
+}
